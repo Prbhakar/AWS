@@ -14,11 +14,41 @@ resource "aws_route_table" "demo-ctm-rtb" {
       }  
 }
 
-# associate CRT and Subnet which requires internet access
-resource "aws_route_table_association" "demo-crtba" {
-  subnet_id = aws_subnet.demo-subnet-public-1.id
+# associate CRT and Subnet which requires internet access'
+
+/*resource "aws_route_table_association" "demo-crtba1" {
+  #count = length(var.subnet_cidrs_public)
+
+  #subnet_id      = element(aws_subnet.demo-subnet-public.*.id, count.index)
+  subnet_id = aws_subnet.demo-subnet-public[0].id
+  
   route_table_id = aws_route_table.demo-ctm-rtb.id
+}*/
+
+/*resource "aws_route_table_association" "demo-crtba2" {
+  count = length(var.subnet_cidrs_public)
+
+  #subnet_id      = element(aws_subnet.demo-subnet-public.*.id, count.index)
+  subnet_id = aws_subnet.demo-subnet-public[1].id
+  
+  route_table_id = aws_route_table.demo-ctm-rtb.id
+}*/
+
+/*resource "aws_route_table_association" "tableau" {
+  for_each       = toset([for subnet in aws_subnet.demo-subnet-public: subnet.id])
+  route_table_id = aws_route_table.demo-ctm-rtb.id
+  subnet_id      = each.value
+}*/
+
+resource "aws_route_table_association" "public-assoc-a" {
+   subnet_id = "${aws_subnet.demo-subnet-public-1.id}"
+   route_table_id = "${aws_route_table.demo-ctm-rtb.id}"
 }
+resource "aws_route_table_association" "public-assoc-c" {
+   subnet_id = "${aws_subnet.demo-subnet-public-2.id}"
+   route_table_id = "${aws_route_table.demo-ctm-rtb.id}"
+}
+
 
 resource "aws_security_group" "demo-ssh-http-allowed" {
   vpc_id = aws_vpc.demo-vpc.id

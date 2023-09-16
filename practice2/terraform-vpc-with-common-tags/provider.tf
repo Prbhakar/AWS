@@ -3,7 +3,7 @@ provider "aws" {
 
     default_tags {
       tags = {
-        Name = "demo-tf-vpc"
+        project = "ALB"
         Environment = "demo"
         Service = "Example"
       }

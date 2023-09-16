@@ -10,6 +10,14 @@ resource "aws_vpc" "demo-vpc" {
   }
 }
 
+/*resource "aws_subnet" "demo-subnet-public" {
+  count = length(var.subnet_cidrs_public)
+
+  vpc_id = aws_vpc.demo-vpc.id
+  cidr_block = var.subnet_cidrs_public[count.index]
+  availability_zone = var.availability_zones[count.index]
+}*/
+
 resource "aws_subnet" "demo-subnet-public-1" {
     vpc_id = aws_vpc.demo-vpc.id
     cidr_block = "10.0.1.0/24"
@@ -19,11 +27,33 @@ resource "aws_subnet" "demo-subnet-public-1" {
 
 }
 
-resource "aws_subnet" "demo-subnet-private-1" {
+resource "aws_subnet" "demo-subnet-public-2" {
     vpc_id = aws_vpc.demo-vpc.id
-    cidr_block = "10.0.2.0/24"
+    cidr_block = "10.0.3.0/24"
+    map_public_ip_on_launch = "true"
     availability_zone = "ap-south-1b"
 
 
 }
+
+
+
+resource "aws_subnet" "demo-subnet-private-1" {
+    vpc_id = aws_vpc.demo-vpc.id
+    cidr_block = "10.0.2.0/24"
+    availability_zone = "ap-south-1a"
+
+
+}
+
+resource "aws_subnet" "demo-subnet-private-2" {
+    vpc_id = aws_vpc.demo-vpc.id
+    cidr_block = "10.0.4.0/24"
+    availability_zone = "ap-south-1b"
+
+
+}
+
+
+
 

@@ -2,6 +2,8 @@
 This practice2 folder contains code to create the VPC and subnets required for testing the ALB concept.
 Setting up lamp server to test the http 80 access
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html
+The above link is configured and the following link also has info on the userdata script
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.htmlß
 
 Setting up load balancer
 https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html

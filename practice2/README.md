@@ -20,4 +20,18 @@ git clone https://github.com/hashicorp/learn-terraform-resources.git
 
 Created VPC, EC2 and associated to the custom vpc and the security group and the corresponding subnet
 
+Creating Load Balancer Steps
+Refer - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html
+Create target group
+Register targets
+Create load balancer ( Choose load balancer type)
+Configure load balancer and listener
+Test your load balancer
+
+Some reference ALB blogs
+
+https://medium.com/@sampark02/application-load-balancer-and-target-group-attachment-using-terraform-d212ce8a38a0ß
+
+https://skundunotes.com/2022/07/30/add-an-application-load-balancer-to-aws-ec2-using-terraform/
+
 
